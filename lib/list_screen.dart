@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolist/create_screen.dart';
-import 'package:todolist/todo.dart';
+import 'package:todolist/main.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({Key? key}) : super(key: key);
@@ -10,17 +10,6 @@ class ListScreen extends StatefulWidget {
 }
 
 class _ListScreenState extends State<ListScreen> {
-  final todos = [
-    Todo(
-      title: 'title 1',
-      dateTime: 12321,
-    ),
-    Todo(
-      title: 'title 1',
-      dateTime: 12321,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,19 +17,18 @@ class _ListScreenState extends State<ListScreen> {
         title: const Text('To Do List'),
       ),
       body: ListView(
-        children: todos
+        children: todos.values
             .map((todo) => ListTile(
-          title: Text(todo.title),
-          subtitle: Text('${todo.dateTime}'),
-        ))
+                  title: Text(todo.title),
+                  subtitle: Text('${todo.dateTime}'),
+                ))
             .toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           Navigator.push(
-              context,
-              MaterialPageRoute(builder:
-          (context) => const CreateScreen()),
+            context,
+            MaterialPageRoute(builder: (context) => const CreateScreen()),
           );
         },
         child: const Icon(Icons.add),
