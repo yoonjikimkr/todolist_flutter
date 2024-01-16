@@ -25,11 +25,15 @@ class _ListScreenState extends State<ListScreen> {
             .toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          // CreateScreen에서 listScreen으로 화면으로 다시 돌아올 때까지 기다리도록. 오래 걸리기 때문에 await
+          await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const CreateScreen()),
           );
+
+          setState(() {
+          });
         },
         child: const Icon(Icons.add),
       ),
