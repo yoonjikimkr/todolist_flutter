@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:todolist/todo.dart';
 
 class TodoItem extends StatelessWidget {
@@ -32,7 +33,8 @@ class TodoItem extends StatelessWidget {
         style: TextStyle(color: todo.isDone ? Colors.grey : Colors.black),
       ),
       subtitle: Text(
-        '${todo.dateTime}',
+        DateFormat.yMMMd()
+            .format(DateTime.fromMillisecondsSinceEpoch(todo.dateTime)),
         style: TextStyle(color: todo.isDone ? Colors.grey : Colors.black),
       ),
     );
